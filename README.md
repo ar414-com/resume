@@ -4,7 +4,7 @@
 
 ### Installation dependencies
 ```console
-npm i
+yarn
 ```
 
 ### Configuration
@@ -14,12 +14,12 @@ npm i
 
 ### start
 ```console
-npm run start 
+yarn start 
 ```
 
 ### build
 ```console
-npm run build 
+yarn build 
 ```
 
 
