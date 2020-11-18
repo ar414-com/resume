@@ -23,6 +23,9 @@ yarn build
 ```
 
 
+### CREATE 
+* `rsc` + `TAB`
+
 
 
 

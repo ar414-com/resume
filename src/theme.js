@@ -1,13 +1,12 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { purple, green } from '@material-ui/core/colors';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 export default createMuiTheme({
     palette: {
         primary: {
-            main: purple[500],
+            main: process.env.REACT_APP_THEME_COLOR_PRIMARY,
         },
         secondary: {
-            main: green[500],
+            main: process.env.REACT_APP_THEME_COLOR_SECONDARY,
         },
     },
 });
