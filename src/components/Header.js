@@ -11,14 +11,21 @@ import TimelineIcon from '@material-ui/icons/Timeline';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import PersonIcon from '@material-ui/icons/Person';
 
-import avatar from '../assets/images/avatar.jpg';
+import avatar from '../assets/images/avatar.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
+    menuIcon: {
+      marginLeft: theme.spacing(1)
+    },
     title: {
+        marginLeft: theme.spacing(1),
         flexGrow: 1,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "1.6rem"
+        }
     },
     menuSliderContainer: {
         width: 250,
@@ -93,9 +100,9 @@ const Header = () => {
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton edge="start" color="secondary" aria-label="menu" onClick={() => toggleDrawerMenu()}>
-                            <MenuIcon/>
+                            <MenuIcon fontSize="large" className={classes.menuIcon} />
                         </IconButton>
-                        <Typography variant="h5" className={classes.title} color="secondary">
+                        <Typography variant="h4" className={classes.title} color="secondary">
                             {process.env.REACT_APP_NAME}
                         </Typography>
                     </Toolbar>

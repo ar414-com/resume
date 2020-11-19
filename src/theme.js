@@ -7,6 +7,6 @@ export default createMuiTheme({
         },
         secondary: {
             main: process.env.REACT_APP_THEME_COLOR_SECONDARY,
-        },
+        }
     },
 });
