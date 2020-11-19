@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {Avatar, Box, Typography, useMediaQuery} from "@material-ui/core";
 import Typed from 'react-typed';
 
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
         },
 
         title: {
+            fontWeight: 400,
             color: theme.palette.secondary.main,
             [theme.breakpoints.down('sm')]: {
                 fontSize: "1.8rem"
@@ -42,7 +43,15 @@ const useStyles = makeStyles((theme) => ({
             color: theme.palette.secondary.light,
             marginTop: theme.spacing(1),
             [theme.breakpoints.down('sm')]: {
-                fontSize: "1.6rem"
+                fontSize: "1.5rem"
+            }
+        },
+
+        skillsTitle: {
+            color: "#FB6D7D",
+            marginTop: theme.spacing(2),
+            [theme.breakpoints.down('sm')]: {
+                fontSize: "1.2rem"
             }
         }
 
@@ -52,12 +61,13 @@ const useStyles = makeStyles((theme) => ({
 const mobileParticlesParams = {
     "particles": {"number": {"value": 15}, "size": {"value": 5}},
     "interactivity": {"events": {"onhover": {"enable": true, "mode": "repulse"}}}
-}
+};
 
 const particlesParams = {
     "particles": {"number": {"value": 30}, "size": {"value": 7}},
     "interactivity": {"events": {"onhover": {"enable": true, "mode": "repulse"}}}
-}
+};
+
 
 const Home = () => {
 
@@ -71,17 +81,29 @@ const Home = () => {
             />
             <Box component="div" className={classes.homeContainer}>
                 <Avatar src={avatar} alt="ar414" className={classes.avatar}/>
-                <Typography variant="h3" color={"secondary"} className={classes.title}>
+                <Typography variant="h2" color={"secondary"} className={classes.title}>
                     <Typed
                         strings={['AR414']}
-                        typeSpeed={150}
+                        typeSpeed={100}
+                        showCursor={true}
+                    />
+                </Typography>
+                <Typography variant="h4" color={"secondary"} className={classes.subTitle}>
+                    <Typed
+                        strings={['Full-stack development @ Independent developer']}
+                        typeSpeed={50}
+                        showCursor={true}
                     />
                 </Typography>
 
-                <Typography variant="h4" color={"secondary"} className={classes.subTitle}>
+                <Typography variant="h5" className={classes.skillsTitle}>
                     <Typed
-                        strings={['Full-stack development', 'Independent developer']}
+                        strings={[
+                            'PHP, GO, Python, Nginx, Docker, Mysql, MongoDB, Redis',
+                            'HTML5 + CSS3 + Javascript, React, React Native, Electron, NodeJs'
+                        ]}
                         typeSpeed={60}
+                        backSpeed={15}
                         loop={true}
                     />
                 </Typography>

@@ -80,8 +80,8 @@ const Header = () => {
             <Avatar alt="AR414" src={avatar} className={classes.avatar}/>
             <Divider variant="middle" className={classes.menuDivider} light={true}/>
             <List>
-                {menuList.map((item) => (
-                    <ListItem className={classes.listItem} button>
+                {menuList.map((item,key) => (
+                    <ListItem key={key} className={classes.listItem} button>
                         <ListItemIcon>{item.listIcon}</ListItemIcon>
                         <ListItemText primary={item.listText}/>
                     </ListItem>
