@@ -1,10 +1,11 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Avatar, Box, Typography, useMediaQuery} from "@material-ui/core";
+import {Avatar, Box, Button, ButtonGroup, Typography, useMediaQuery} from "@material-ui/core";
 import Typed from 'react-typed';
 
 import avatar from "../assets/images/avatar.png";
 import Particles from "react-particles-js";
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
             [theme.breakpoints.down('sm')]: {
                 fontSize: "1.2rem"
             }
+        },
+
+        buttonGroup: {
+            marginTop: theme.spacing(2)
         }
 
     }
@@ -90,23 +95,30 @@ const Home = () => {
                 </Typography>
                 <Typography variant="h4" color={"secondary"} className={classes.subTitle}>
                     <Typed
-                        strings={['Full-stack development @ Independent developer']}
+                        strings={['Full-stack Development','Independent Developer']}
                         typeSpeed={50}
+                        backSpeed={15}
+                        loop={true}
                         showCursor={true}
                     />
                 </Typography>
-
-                <Typography variant="h5" className={classes.skillsTitle}>
-                    <Typed
-                        strings={[
-                            'PHP, GO, Python, Nginx, Docker, Mysql, MongoDB, Redis',
-                            'HTML5 + CSS3 + Javascript, React, React Native, Electron, NodeJs'
-                        ]}
-                        typeSpeed={60}
-                        backSpeed={15}
-                        loop={true}
-                    />
-                </Typography>
+                <ButtonGroup size={useMediaQuery(theme => theme.breakpoints.up('sm')) ? "medium" : "small"} className={classes.buttonGroup} variant="outlined" color="secondary" aria-label="text primary button group">
+                    <Button component={Link} to={'/'}>Home</Button>
+                    <Button component={Link} to={'timeline'}>TimeLine</Button>
+                    <Button component={Link} to={'/project'}>Project</Button>
+                    <Button component={Link} to={'/project'}>Introduction</Button>
+                </ButtonGroup>
+                {/*<Typography variant="h5" className={classes.skillsTitle}>*/}
+                {/*    <Typed*/}
+                {/*        strings={[*/}
+                {/*            'PHP, GO, Python, Nginx, Docker, Mysql, MongoDB, Redis',*/}
+                {/*            'HTML5 + CSS3 + Javascript, React, React Native, Electron, NodeJs'*/}
+                {/*        ]}*/}
+                {/*        typeSpeed={60}*/}
+                {/*        backSpeed={15}*/}
+                {/*        loop={true}*/}
+                {/*    />*/}
+                {/*</Typography>*/}
             </Box>
         </>
 

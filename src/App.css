@@ -1,7 +1,7 @@
-.backgroundMain {
+body {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: -1;
@@ -10,10 +10,10 @@
 }
 
 @media screen and (max-width: 960px){
-  .backgroundMain {
+  body {
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     top: 0;
     left: 0;
     z-index: -1;
@@ -22,7 +22,7 @@
   }
 }
 
-.backgroundMain:after {
+body:after {
   position: absolute;
   top: 0;
   left: 0;

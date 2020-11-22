@@ -1,8 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {
-    AppBar, Button, IconButton, Toolbar, Typography, Box, Avatar, Divider,
-    List, ListItem, ListItemIcon, ListItemText, Drawer
+    AppBar,
+    Avatar,
+    Box,
+    Divider,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Toolbar,
+    Typography
 } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -10,8 +20,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import PersonIcon from '@material-ui/icons/Person';
+import LanguageIcon from '@material-ui/icons/Language';
 
 import avatar from '../assets/images/avatar.png';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1)
     },
     title: {
+        textTransform: "capitalize",
         marginLeft: theme.spacing(1),
         flexGrow: 1,
         [theme.breakpoints.down('sm')]: {
@@ -53,25 +66,37 @@ const useStyles = makeStyles((theme) => ({
 const menuList = [
     {
         listIcon: <HomeIcon color="secondary"/>,
-        listText: "Home"
+        listText: "Home",
+        link: '/',
     },
     {
         listIcon: <TimelineIcon color="secondary"/>,
-        listText: "TimeLine"
+        listText: "TimeLine",
+        link: '/timeline',
     },
     {
         listIcon: <AttachFileIcon color="secondary"/>,
-        listText: "Project"
+        listText: "Project",
+        link: '/project',
     },
     {
         listIcon: <PersonIcon color="secondary"/>,
-        listText: "Introduction"
-    },
+        listText: "Introduction",
+        link: '/introduction',
+    }
 ];
 
 const Header = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const [urlPath,setUrlPath] = useState("Home");
+
+    useEffect(() => {
+        let pathname = window.location.pathname;
+        pathname = pathname.replace("/","");
+        pathname = !pathname ? "home" : pathname;
+        setUrlPath(pathname);
+    },[window.location.pathname])
 
     const classes = useStyles();
 
@@ -81,11 +106,18 @@ const Header = () => {
             <Divider variant="middle" className={classes.menuDivider} light={true}/>
             <List>
                 {menuList.map((item,key) => (
-                    <ListItem key={key} className={classes.listItem} button>
+                    <ListItem key={key} className={classes.listItem} button onClick={() => setIsOpenMenu(false)} component={Link} to={item.link}>
                         <ListItemIcon>{item.listIcon}</ListItemIcon>
                         <ListItemText primary={item.listText}/>
                     </ListItem>
                 ))}
+                <a href="https://www.ar414.com" target={"_blank"}>
+                    <ListItem className={classes.listItem} button>
+                        <ListItemIcon><LanguageIcon color="secondary"/></ListItemIcon>
+                        <ListItemText primary={"blog"}/>
+                    </ListItem>
+                </a>
+
             </List>
         </Box>
     );
@@ -103,7 +135,7 @@ const Header = () => {
                             <MenuIcon fontSize="large" className={classes.menuIcon} />
                         </IconButton>
                         <Typography variant="h4" className={classes.title} color="secondary">
-                            {process.env.REACT_APP_NAME}
+                            {urlPath}
                         </Typography>
                     </Toolbar>
                 </AppBar>
